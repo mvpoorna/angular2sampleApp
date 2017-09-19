@@ -1,18 +1,24 @@
-import { Component, Input } from '@angular/core';
-import { Hero } from './hero';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import { HeroService } from './hero.service';
 
 @Component({
-    selector: 'hero-detail',
-    template: `
-      <div *ngIf="hero">
-        <h2>{{hero.name}} details!</h2>
-        <div><label>id: </label>{{hero.id}}</div>
-        <div>
-          <label>name: </label>
-          <input [(ngModel)]="hero.name" placeholder="name"/>
-        </div>
-      </div>`
+  selector: 'hero-detail',
+  template: `
+    <div *ngIf="hero">
+      <h2>{{hero.name}} details!</h2>
+      <div>
+        <label>id: </label>{{hero.id}}
+      </div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="hero.name" placeholder="name"/>
+      </div>
+    </div>
+  `
 })
 export class HeroDetailComponent {
-    @Input() hero: Hero;
+  @Input() hero: Hero;
 }
